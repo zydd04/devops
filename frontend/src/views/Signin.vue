@@ -20,7 +20,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const email = ref('')
 const password = ref('')
 const message = ref('')
@@ -37,9 +39,8 @@ async function handleSubmit() {
     })
     if (!res.ok) throw new Error('Sign in failed')
     const data = await res.json()
-    message.value = `Welcome back!`
-    email.value = ''
-    password.value = ''
+    localStorage.setItem('userEmail', data.email)
+    router.push('/dashboard')
   } catch (err) {
     message.value = 'Invalid email or password'
     console.error(err)
@@ -48,25 +49,3 @@ async function handleSubmit() {
   }
 }
 </script>
-
-<style scoped>
-.signin {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-}
-input {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-}
-button {
-  padding: 0.5rem 1rem;
-  background: #0687a4;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>
