@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue' 
 
 const email = ref('')
 const password = ref('')
@@ -61,26 +61,3 @@ async function handleSubmit() {
   }
 }
 </script>
-<style scoped>
-.signup {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-}
-
-input {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  background: #0687a4;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>
