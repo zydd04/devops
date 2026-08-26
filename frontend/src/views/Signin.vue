@@ -40,7 +40,7 @@ async function handleSubmit() {
     if (!res.ok) throw new Error('Sign in failed')
     const data = await res.json()
     localStorage.setItem('userEmail', data.email)
-    router.push('/dashboard')
+    window.location.href = '/dashboard'
   } catch (err) {
     message.value = 'Invalid email or password'
     console.error(err)

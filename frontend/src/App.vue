@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const isLoggedIn = ref(!!localStorage.getItem('userEmail'))
+const isLoggedIn = ref(!!(localStorage.getItem('userEmail')))
 
 function logout() {
   localStorage.removeItem('userEmail')
@@ -19,7 +19,7 @@ function logout() {
       <router-link to="/signin">Sign In</router-link>
     </template>
     <template v-else>
-      <a href="#" @click.prevent="logout">Logout</a>
+      <a href="/" @click.prevent="logout">Logout</a>
     </template>
   </nav>
   <router-view />
